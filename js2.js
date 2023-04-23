@@ -7,7 +7,7 @@ async function saveToCrudCrud(event){
         let product={
             name,
             price};
-            const response=await axios.post("https://crudcrud.com/api/2dcafabc7870495aa278bb5fc4ff41b7/product",product)
+            const response=await axios.post("https://crudcrud.com/api/b99c52e343d840b3b0c3a3a996a574ce/product",product)
             showDetailsOnScreen(response.data)
         }catch(err){
             document.getElementById("forms").innerHTML=document.getElementById("forms").innerHTML+"<h4>something went wrong</h4>"
@@ -32,7 +32,7 @@ async function showDetailsOnScreen(product){
         deletbtn.value="Delete❌";
         deletbtn.classList="btn btn-dark ms-1 rounded-pill"
         deletbtn.onclick=async()=>{
-            let res=await axios.delete(`https://crudcrud.com/api/2dcafabc7870495aa278bb5fc4ff41b7/product/${product._id}`)
+            let res=await axios.delete(`https://crudcrud.com/api/b99c52e343d840b3b0c3a3a996a574ce/product/${product._id}`)
             console.log(res)
             totalsellingPrice-=
             parseInt(product.price);
@@ -49,8 +49,8 @@ async function showDetailsOnScreen(product){
 }
 window.addEventListener("DOMContentLoaded",async(e)=>{
     try{
-            const response=await axios.get("https://crudcrud.com/api/2dcafabc7870495aa278bb5fc4ff41b7/product")
-            for(let i=0;i<response.data.length;i++){
+            let response=await axios.get("https://crudcrud.com/api/b99c52e343d840b3b0c3a3a996a574ce/product")
+            for(var i=0;i<response.data.length;i++){
                 showDetailsOnScreen(response.data[i])
             }
             
